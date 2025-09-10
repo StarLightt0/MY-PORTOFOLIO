@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Vhirell Pratama Putra</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+            padding: 0;
+            min-height: 100vh;
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #000;
+            position: relative;
+            padding: 20px;
+            transform: translateY(20px);
+            animation: slideUp 0.8s ease-out forwards;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: #000;
+            border-bottom: 1px solid #333;
+            transform: translateY(-20px);
+            animation: headerSlide 0.8s ease-out 0.3s forwards;
+            opacity: 0;
+        }
+
+        @keyframes headerSlide {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 24px;
+            color: #fff;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #fff;
+            transition: width 0.5s ease;
+        }
+
+        .logo:hover::after {
+            width: 100%;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+            position: relative;
+            opacity: 0;
+            transform: translateY(-10px);
+            animation: navItemFade 0.6s ease-out forwards;
+        }
+
+        .skill-item:nth-child(1) {
+            animation-delay: 0.8s;
+        }
+
+        .skill-item:nth-child(2) {
+            animation-delay: 1s;
+        }
+
+        .skill-item:nth-child(3) {
+            animation-delay: 1.2s;
+        }
+
+        .skill-item:nth-child(4) {
+            animation-delay: 1.4s;
+        }
+
+        .skill-item:nth-child(5) {
+            animation-delay: 1.6s;
+        }
+
+        @keyframes navItemFade {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        nav ul li:not(:last-child):after {
+            content: "•";
+            position: absolute;
+            right: -18px;
+            color: #666;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 400;
+            font-size: 16px;
+            transition: all 0.3s;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #0066cc;
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #0066cc;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .page-title {
+            text-align: center;
+            padding: 40px 0 20px;
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: titleFadeIn 0.8s ease-out 0.8s forwards;
+        }
+
+        @keyframes titleFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 40px;
+            opacity: 0;
+            animation: gridFadeIn 1s ease-out 1s forwards;
+        }
+
+        @keyframes gridFadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .portfolio-item {
+            background: #111;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform: translateY(30px);
+            opacity: 0;
+            animation: itemSlideUp 0.6s ease-out forwards;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .portfolio-item:nth-child(1) {
+            animation-delay: 1.1s;
+        }
+
+        .portfolio-item:nth-child(2) {
+            animation-delay: 1.2s;
+        }
+
+        .portfolio-item:nth-child(3) {
+            animation-delay: 1.3s;
+        }
+
+        .portfolio-item:nth-child(4) {
+            animation-delay: 1.4s;
+        }
+
+        .portfolio-item:nth-child(5) {
+            animation-delay: 1.5s;
+        }
+
+        .portfolio-item:nth-child(6) {
+            animation-delay: 1.6s;
+        }
+
+        @keyframes itemSlideUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 102, 204, 0.3);
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .portfolio-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .portfolio-item:hover .portfolio-image img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.7) 100%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .portfolio-item:hover .portfolio-image::after {
+            opacity: 1;
+        }
+
+        .portfolio-content {
+            padding: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .portfolio-item:hover .portfolio-content {
+            background-color: #1a1a1a;
+        }
+
+        .portfolio-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #fff;
+            transition: color 0.3s ease;
+        }
+
+        .portfolio-item:hover .portfolio-title {
+            color: #0066cc;
+        }
+
+        .portfolio-description {
+            font-size: 14px;
+            color: #ccc;
+            line-height: 1.6;
+            transition: color 0.3s ease;
+        }
+
+        .portfolio-item:hover .portfolio-description {
+            color: #fff;
+        }
+
+        .portfolio-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+            transform: translateY(10px);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .portfolio-item:hover .portfolio-tags {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .tag {
+            background: #0066cc;
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .tag:hover {
+            background: #0055aa;
+            transform: scale(1.05);
+        }
+
+        .divider {
+            height: 1px;
+            background-color: #333;
+            width: 100%;
+            opacity: 0;
+            animation: expandWidth 1s ease-out 0.5s forwards;
+        }
+
+        @keyframes expandWidth {
+            from {
+                width: 0;
+                opacity: 0;
+            }
+
+            to {
+                width: 100%;
+                opacity: 1;
+            }
+        }
+
+        .page-number {
+            text-align: right;
+            padding: 30px 40px 20px;
+            font-size: 14px;
+            color: #666;
+            letter-spacing: 0.5px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1.8s forwards;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 992px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 20px;
+                text-align: center;
+            }
+
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 10px 15px;
+            }
+
+            nav ul li:not(:last-child):after {
+                display: none;
+            }
+
+            .portfolio-grid {
+                padding: 20px;
+                gap: 20px;
+            }
+
+            .page-title {
+                font-size: 28px;
+                padding: 30px 0 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                padding: 15px;
+            }
+
+            .page-title {
+                font-size: 24px;
+            }
+
+            .page-number {
+                padding: 20px 15px 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">Vhirell Pratama Putra</div>
+            <nav>
+                <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./portfolio.html">Portfolio</a></li>
+                    <li><a href="./skill.html">Skill</a></li>
+                    <li><a href="./contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="divider"></div>
+
+        <h1 class="page-title">My Portfolio</h1>
+
+        <div class="portfolio-grid">
+            <!-- Portfolio Item 1 -->
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <img src="smk.png" alt="SMKS Mahaputra Cerdas Utama">
+                </div>
+                <div class="portfolio-content">
+                    <h3 class="portfolio-title">SMKS Mahaputra Cerdas Utama</h3>
+                    <p class="portfolio-description">Membangun Website Resmi SMKS Mahaputra Cerdas Utama,Inovasi Digital
+                        untuk Pendidikan Berkualitas</p>
+                    <div class="portfolio-tags">
+                        <span class="tag">HTML/CSS</span>
+                        <span class="tag">Bootstrap</span>
+                        <span class="tag">Dekstop</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Portfolio Item 2 -->
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <img src="unibook-store.png" alt="UNIBOOK-STORE">
+                </div>
+                <div class="portfolio-content">
+                    <h3 class="portfolio-title">UNIBOOK-STORE</h3>
+                    <p class="portfolio-description">Membangun Website Study Kasus Perpustakaan</p>
+                    <div class="portfolio-tags">
+                        <span class="tag">HTML/CSS</span>
+                        <span class="tag">Javascript</span>
+                        <span class="tag">Bootstrap</span>
+                        <span class="tag">PHP</span>
+                        <span class="tag">MYSQL</span>
+                        <span class="tag">Dekstop</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Portfolio Item 3 -->
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <img src="imuweb-store.png" alt="imuweb-store.png">
+                </div>
+                <div class="portfolio-content">
+                    <h3 class="portfolio-title">IMU-WebStore</h3>
+                    <p class="portfolio-description">Membangun Tampilan WebISIte Top Up Game Cepat, Mudah, dan
+                        Terpercaya untuk Pengalaman Gaming Tanpa Batas </p>
+                    <div class="portfolio-tags">
+                        <span class="tag">HTML/CSS</span>
+                        <span class="tag">Dekstop</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Portfolio Item 4 -->
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <img src="cashmate.png" alt="cashmate-app">
+                </div>
+                <div class="portfolio-content">
+                    <h3 class="portfolio-title">Cashmate</h3>
+                    <p class="portfolio-description">Cashmate adalah aplikasi yang dirancang untuk membantu bisnis dalam
+                        mengelola aktivitas penjualan dengan cepat, aman, dan terstruktur</p>
+                    <div class="portfolio-tags">
+                        <span class="tag">HTML/CSS</span>
+                        <span class="tag">Javascript</span>
+                        <span class="tag">PHP</span>
+                        <span class="tag">LARAVEL</span>
+                        <span class="tag">MYSQL</span>
+                        <span class="tag">Dekstop</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Portfolio Item 5 -->
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <img src="./pomodoro.png" alt="pomodoro-app">
+                </div>
+                <div class="portfolio-content">
+                    <h3 class="portfolio-title">Pomodoro-App</h3>
+                    <p class="portfolio-description">Membangun aplikasi pomodoro-app untuk membantu mengatur waktu agar
+                        lebih efesien.</p>
+                    <div class="portfolio-tags">
+                        <span class="tag">HTML/CSS</span>
+                        <span class="tag">Javascript</span>
+                        <span class="tag">Dekstop/Mobile</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Portfolio Item 6 -->
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <img src="./maha-ai.png" alt="maha-ai">
+                </div>
+                <div class="portfolio-content">
+                    <h3 class="portfolio-title">MAHA.AI</h3>
+                    <p class="portfolio-description">Membangun aplikasi ai berbasis mobile,membantu pengguna untuk
+                        mencari pengetahuan baru dan untuk menggali ilmu lebih lanjut. </p>
+                    <div class="portfolio-tags">
+                        <span class="tag">MIT App Inventor</span>
+                        <span class="tag">Mobile</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Portfolio Item 7 -->
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <img src="./tefa.png" alt="tefa">
+                </div>
+                <div class="portfolio-content">
+                    <h3 class="portfolio-title">UNIMEDIA</h3>
+                    <p class="portfolio-description">Membangun website study kasus berbasis media sosial,dimana para
+                        siswa/siwi bisa menyimpan foto-foto dan dokumentasi lainnya.</p>
+                    <div class="portfolio-tags">
+                        <span class="tag">HTML/CSS</span>
+                        <span class="tag">Javascript</span>
+                        <span class="tag">Bootstrap</span>
+                        <span class="tag">PHP</span>
+                        <span class="tag">LARAVEL</span>
+                        <span class="tag">MYSQL</span>
+                        <span class="tag">Dekstop</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="divider"></div>
+
+    <div class="page-number">Page | 02</div>
+    </div>
+</body>
+
+</html>
