@@ -465,6 +465,9 @@
 <body>
     <div class="container">
         <header>
+            <button id="translate-btn" class="btn"
+                style="margin-left: 20px; padding: 8px 15px; font-size: 14px;">EN</button>
+
             <div class="logo">Vhirell Pratama Putra</div>
             <nav>
                 <ul>
@@ -478,7 +481,7 @@
 
         <div class="divider"></div>
 
-        <h1 class="page-title">My Portfolio</h1>
+        <h1 class="page-title" data-translate="title">My Portfolio</h1>
 
         <div class="portfolio-grid">
             <!-- Portfolio Item 1 -->
@@ -487,8 +490,9 @@
                     <img src="smk.png" alt="SMKS Mahaputra Cerdas Utama">
                 </div>
                 <div class="portfolio-content">
-                    <h3 class="portfolio-title">SMKS Mahaputra Cerdas Utama</h3>
-                    <p class="portfolio-description">Membangun Website Resmi SMKS Mahaputra Cerdas Utama,Inovasi Digital
+                    <h3 class="portfolio-title" data-translate="h31">SMKS Mahaputra Cerdas Utama</h3>
+                    <p class="portfolio-description" data-translate="desc1">Membangun Website Resmi SMKS Mahaputra
+                        Cerdas Utama,Inovasi Digital
                         untuk Pendidikan Berkualitas</p>
                     <div class="portfolio-tags">
                         <span class="tag">HTML/CSS</span>
@@ -504,8 +508,9 @@
                     <img src="unibook-store.png" alt="UNIBOOK-STORE">
                 </div>
                 <div class="portfolio-content">
-                    <h3 class="portfolio-title">UNIBOOK-STORE</h3>
-                    <p class="portfolio-description">Membangun Website Study Kasus Perpustakaan</p>
+                    <h3 class="portfolio-title" data-translate="h32">UNIBOOK-STORE</h3>
+                    <p class="portfolio-description" data-translate="desc2">Membangun Website Study Kasus Perpustakaan
+                    </p>
                     <div class="portfolio-tags">
                         <span class="tag">HTML/CSS</span>
                         <span class="tag">Javascript</span>
@@ -523,8 +528,9 @@
                     <img src="imuweb-store.png" alt="imuweb-store.png">
                 </div>
                 <div class="portfolio-content">
-                    <h3 class="portfolio-title">IMU-WebStore</h3>
-                    <p class="portfolio-description">Membangun Tampilan WebISIte Top Up Game Cepat, Mudah, dan
+                    <h3 class="portfolio-title" data-translate="h33">IMU-WebStore</h3>
+                    <p class="portfolio-description" data-translate="desc3">Membangun Tampilan WebISIte Top Up Game
+                        Cepat, Mudah, dan
                         Terpercaya untuk Pengalaman Gaming Tanpa Batas </p>
                     <div class="portfolio-tags">
                         <span class="tag">HTML/CSS</span>
@@ -539,8 +545,9 @@
                     <img src="cashmate.png" alt="cashmate-app">
                 </div>
                 <div class="portfolio-content">
-                    <h3 class="portfolio-title">Cashmate</h3>
-                    <p class="portfolio-description">Cashmate adalah aplikasi yang dirancang untuk membantu bisnis dalam
+                    <h3 class="portfolio-title" data-translate="h34">Cashmate</h3>
+                    <p class="portfolio-description" data-translate="desc4">Cashmate adalah aplikasi yang dirancang
+                        untuk membantu bisnis dalam
                         mengelola aktivitas penjualan dengan cepat, aman, dan terstruktur</p>
                     <div class="portfolio-tags">
                         <span class="tag">HTML/CSS</span>
@@ -559,8 +566,9 @@
                     <img src="./pomodoro.png" alt="pomodoro-app">
                 </div>
                 <div class="portfolio-content">
-                    <h3 class="portfolio-title">Pomodoro-App</h3>
-                    <p class="portfolio-description">Membangun aplikasi pomodoro-app untuk membantu mengatur waktu agar
+                    <h3 class="portfolio-title" data-translate="h35">Pomodoro-App</h3>
+                    <p class="portfolio-description" data-translate="desc5">Membangun aplikasi pomodoro-app untuk
+                        membantu mengatur waktu agar
                         lebih efesien.</p>
                     <div class="portfolio-tags">
                         <span class="tag">HTML/CSS</span>
@@ -576,8 +584,9 @@
                     <img src="./maha-ai.png" alt="maha-ai">
                 </div>
                 <div class="portfolio-content">
-                    <h3 class="portfolio-title">MAHA.AI</h3>
-                    <p class="portfolio-description">Membangun aplikasi ai berbasis mobile,membantu pengguna untuk
+                    <h3 class="portfolio-title" data-translate="h36">MAHA.AI</h3>
+                    <p class="portfolio-description" data-translate="desc6">Membangun aplikasi ai berbasis
+                        mobile,membantu pengguna untuk
                         mencari pengetahuan baru dan untuk menggali ilmu lebih lanjut. </p>
                     <div class="portfolio-tags">
                         <span class="tag">MIT App Inventor</span>
@@ -592,8 +601,9 @@
                     <img src="./tefa.png" alt="tefa">
                 </div>
                 <div class="portfolio-content">
-                    <h3 class="portfolio-title">UNIMEDIA</h3>
-                    <p class="portfolio-description">Membangun website study kasus berbasis media sosial,dimana para
+                    <h3 class="portfolio-title" data-translate="h37">UNIMEDIA</h3>
+                    <p class="portfolio-description" data-translate="desc7">Membangun website study kasus berbasis
+                        media sosial,dimana para
                         siswa/siwi bisa menyimpan foto-foto dan dokumentasi lainnya.</p>
                     <div class="portfolio-tags">
                         <span class="tag">HTML/CSS</span>
@@ -614,6 +624,66 @@
 
     <div class="page-number">Page | 02</div>
     </div>
+
+    <script>
+        const translations = {
+            en: {
+                title: "My Portfolio",
+                h31: "SMKS Mahaputra Cerdas Utama",
+                desc1: "Building the Official Website of SMKS Mahaputra Cerdas Utama, Digital Innovation for Quality Education",
+                h32: "UNIBOOK-STORE",
+                desc2: "Building a Library Case Study Website",
+                h33: "IMU-WebStore",
+                desc3: "Building a Fast, Easy, and Trusted Game Top-Up Website Interface for",
+                h34: "Cashmate",
+                desc4: "Cashmate is an application designed to help businesses manage sales activities quickly",
+                h35: "Pomodoro-App",
+                desc5: "Building a pomodoro-app application to help manage time more efficiently.",
+                h36: "MAHA.AI",
+                desc6: "Building an AI-based mobile application to help users seek new knowledge and explore",
+                h37: "UNIMEDIA",
+                desc7: "Building a social media-based case study website where students can store photos and",
+            },
+            id: {
+                title: "Portofolio Saya",
+                h31: "SMKS Mahaputra Cerdas Utama",
+                desc1: "Membangun Website Resmi SMKS Mahaputra Cerdas Utama,Inovasi Digital untuk Pendidikan Berkualitas",
+                h32: "UNIBOOK-STORE",
+                desc2: "Membangun Website Study Kasus Perpustakaan",
+                h33: "IMU-WebStore",
+                desc3: "Membangun Tampilan WebISIte Top Up Game Cepat, Mudah, dan Terpercaya untuk Pengalaman Gaming Tanpa Batas",
+                h34: "Cashmate",
+                desc4: "Cashmate adalah aplikasi yang dirancang untuk membantu bisnis dalam mengelola aktivitas penjualan dengan cepat, aman, dan terstruktur",
+                h35: "Pomodoro-App",
+                desc5: "Membangun aplikasi pomodoro-app untuk membantu mengatur waktu agar lebih efesien.",
+                h36: "MAHA.AI",
+                desc6: "Membangun aplikasi ai berbasis mobile,membantu pengguna untuk mencari pengetahuan baru dan untuk menggali ilmu lebih lanjut.",
+                h37: "UNIMEDIA",
+                desc7: "Membangun website study kasus berbasis media sosial,dimana para siswa/siwi bisa menyimpan foto-foto dan dokumentasi lainnya.",
+            }
+        };
+
+        const btn = document.getElementById('translate-btn');
+
+        let currentLang = localStorage.getItem('lang') || 'id';
+        setLanguage(currentLang);
+
+        btn.addEventListener('click', () => {
+            currentLang = currentLang === 'id' ? 'en' : 'id';
+            localStorage.setItem('lang', currentLang);
+            setLanguage(currentLang);
+        });
+
+        function setLanguage(lang) {
+            btn.textContent = lang === 'id' ? 'EN' : 'ID';
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                const key = el.getAttribute('data-translate');
+                el.textContent = translations[lang][key];
+            });
+        }
+
+
+    </script>
 </body>
 
 </html>
