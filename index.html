@@ -564,9 +564,14 @@
 </head>
 
 <body>
+
     <div class="container">
         <header>
+            <button id="translate-btn" class="btn"
+                style="margin-left: 20px; padding: 8px 15px; font-size: 14px;">EN</button>
+
             <div class="logo">Vhirell Pratama Putra</div>
+
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -587,16 +592,18 @@
             </div>
 
             <section class="hero">
-                <h1>My Portfolio</h1>
+                <h1 data-translate="title">Tentang Saya</h1>
                 <div class="hero-content">
-                    <p>Vhirell Pratama Putra, seorang siswa dari SMK Mahaputra Cerdas Utama dengan semangat tinggi dalam
+                    <p data-translate="p1">Vhirell Pratama Putra, seorang siswa dari SMK Mahaputra Cerdas Utama dengan
+                        semangat tinggi dalam
                         dunia teknologi. Dengan latar belakang di bidang pengembangan perangkat lunak, saya telah
                         membangun fondasi yang kuat dalam pemrograman dan inovasi digital.</p>
-                    <p>Ketertarikan saya terhadap perkembangan teknologi mendorong saya untuk terus belajar,
+                    <p data-translate="p2">Ketertarikan saya terhadap perkembangan teknologi mendorong saya untuk terus
+                        belajar,
                         mengeksplorasi, dan menciptakan solusi yang bermanfaat. Saya berkomitmen untuk mengembangkan
                         keahlian ini semaksimal mungkin demi masa depan yang lebih cerdas dan inovatif.</p>
                 </div>
-                <a href="./portfolio.html" class="btn">Explore Now</a>
+                <a href="./portfolio.html" class="btn" data-translate="btn">Explore Now</a>
             </section>
         </div>
 
@@ -604,6 +611,44 @@
 
         <div class="page-number">Page | 01</div>
     </div>
+
+    <script>
+        const translations = {
+            en: {
+                title: "About Me",
+                p1: "Vhirell Pratama Putra, a student from SMK Mahaputra Cerdas Utama with high enthusiasm in technology. With a background in software development, I have built a strong foundation in programming and digital innovation.",
+                p2: "My interest in technological development drives me to keep learning, exploring, and creating useful solutions. I am committed to developing these skills to their fullest potential for a smarter and more innovative future.",
+                btn: "Explore Now"
+            },
+            id: {
+                title: "Tentang Saya",
+                p1: "Vhirell Pratama Putra, seorang siswa dari SMK Mahaputra Cerdas Utama dengan semangat tinggi dalam dunia teknologi. Dengan latar belakang di bidang pengembangan perangkat lunak, saya telah membangun fondasi yang kuat dalam pemrograman dan inovasi digital.",
+                p2: "Ketertarikan saya terhadap perkembangan teknologi mendorong saya untuk terus belajar, mengeksplorasi, dan menciptakan solusi yang bermanfaat. Saya berkomitmen untuk mengembangkan keahlian ini semaksimal mungkin demi masa depan yang lebih cerdas dan inovatif.",
+                btn: "Jelajahi Sekarang"
+            }
+        };
+
+        const btn = document.getElementById('translate-btn');
+        
+        let currentLang = localStorage.getItem('lang') || 'id';
+        setLanguage(currentLang);
+
+        btn.addEventListener('click', () => {
+            currentLang = currentLang === 'id' ? 'en' : 'id';
+            localStorage.setItem('lang', currentLang); 
+            setLanguage(currentLang);
+        });
+
+        function setLanguage(lang) {
+            btn.textContent = lang === 'id' ? 'EN' : 'ID';
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                const key = el.getAttribute('data-translate');
+                el.textContent = translations[lang][key];
+            });
+        }
+
+
+    </script>
 </body>
 
 </html>
