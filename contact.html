@@ -335,6 +335,10 @@
 <body>
     <div class="container">
         <header>
+
+             <button id="translate-btn" class="btn"
+                style="margin-left: 20px; padding: 8px 15px; font-size: 14px;">EN</button>
+                
             <div class="logo">Vhirell Pratama Putra</div>
             <nav>
                 <ul>
@@ -348,10 +352,10 @@
 
         <div class="divider"></div>
 
-        <h1 class="page-title">My Contact</h1>
+        <h1 class="page-title" data-translate="title">Hubungi Saya</h1>
 
         <div class="contact-container">
-            <p class="contact-description">
+            <p class="contact-description" data-translate="desc">
                 Ingin terhubung atau berdiskusi lebih lanjut? Jangan ragu untuk menghubungi saya.
                 Saya selalu terbuka untuk peluang kerja sama, proyek baru, atau sekadar berbagi wawasan.
             </p>
@@ -363,7 +367,7 @@
                             <i class="fas fa-phone"></i>
                         </div>
                         <div class="contact-details">
-                            <div class="contact-label">Telepon</div>
+                            <div class="contact-label" data-translete="tp">Telepon</div>
                             <div class="contact-value">+62 851 3671 4704</div>
                         </div>
                     </li>
@@ -390,7 +394,7 @@
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
                         <div class="contact-details">
-                            <div class="contact-label">Alamat</div>
+                            <div class="contact-label" data-translete="ad">Alamat</div>
                             <div class="contact-value">Bandung, Katapang</div>
                         </div>
                     </li>
@@ -402,6 +406,43 @@
 
         <div class="page-number">Page | 04</div>
     </div>
+
+    <script>
+         const translations = {
+            en: {
+                title: "Contact Me",
+                desc: "Want to connect or discuss further? Feel free to reach out to me. I am always open to collaboration opportunities, new projects, or simply sharing insights.",
+                tp: "Phone",
+                ad: "Address",
+            },
+            id: {
+                title: "Hubungi Saya",
+                desc: "Ingin terhubung atau berdiskusi lebih lanjut? Jangan ragu untuk menghubungi saya. Saya selalu terbuka untuk peluang kerja sama, proyek baru, atau sekadar berbagi wawasan.",
+                tp: "Telepon",
+                ad: "Alamat",
+            }
+        };
+
+        const btn = document.getElementById('translate-btn');
+        
+        let currentLang = localStorage.getItem('lang') || 'id';
+        setLanguage(currentLang);
+
+        btn.addEventListener('click', () => {
+            currentLang = currentLang === 'id' ? 'en' : 'id';
+            localStorage.setItem('lang', currentLang); 
+            setLanguage(currentLang);
+        });
+
+        function setLanguage(lang) {
+            btn.textContent = lang === 'id' ? 'EN' : 'ID';
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                const key = el.getAttribute('data-translate');
+                el.textContent = translations[lang][key];
+            });
+        }
+
+    </script>
 </body>
 
 </html>
