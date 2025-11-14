@@ -138,6 +138,10 @@
             animation-delay: 1.6s;
         }
 
+        .skill-item:nth-child(6) {
+            animation-delay: 1.6s;
+        }
+
         @keyframes navItemFade {
             from {
                 opacity: 0;
@@ -262,6 +266,15 @@
         .portfolio-item:nth-child(6) {
             animation-delay: 1.6s;
         }
+
+        .portfolio-item:nth-child(7) {
+            animation-delay: 1.7s;
+        }
+
+        .portfolio-item:nth-child(8) {
+            animation-delay: 1.8s;
+        }
+
 
         @keyframes itemSlideUp {
             from {
@@ -459,6 +472,41 @@
                 padding: 20px 15px 15px;
             }
         }
+
+        /* carousel */
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            height: 200px;
+        }
+
+        .carousel img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .carousel img.active {
+            opacity: 1;
+        }
+
+        .carousel .prev,
+        .carousel .next {
+            display: none;
+        }
+
+        .carousel .prev {
+            left: 10px;
+        }
+
+        .carousel .next {
+            right: 10px;
+        }
     </style>
 </head>
 
@@ -541,8 +589,15 @@
 
             <!-- Portfolio Item 4 -->
             <div class="portfolio-item">
-                <div class="portfolio-image">
+                <div class="portfolio-image carousel">
                     <img src="cashmate.png" alt="cashmate-app">
+                    <img src="cashmate2.png" alt="cashmate-app2">
+                    <img src="cashmate3.png" alt="cashmate-app3">
+                    <img src="cashmate4.png" alt="cashmate-app4">
+                    <img src="cashmate5.png" alt="cashmate-app5">
+
+                    <button class="prev">&#10094;</button>
+                    <button class="next">&#10095;</button>
                 </div>
                 <div class="portfolio-content">
                     <h3 class="portfolio-title" data-translate="h34">Cashmate</h3>
@@ -616,6 +671,36 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Portfolio Item 8 -->
+            <div class="portfolio-item">
+                <div class="portfolio-image carousel">
+                    <img src="./queenstatic.png" alt="tefa">
+                    <img src="./queenstatic2.png" alt="tefa">
+                    <img src="./queenstatic3.png" alt="tefa">
+                    <img src="./queenstatic4.png" alt="tefa">
+                    <img src="./queenstatic5.png" alt="tefa">
+
+                    <button class="prev">&#10094;</button>
+                    <button class="next">&#10095;</button>
+                </div>
+                <div class="portfolio-content">
+                    <h3 class="portfolio-title" data-translate="h38">QueenStatic_Shop</h3>
+                    <p class="portfolio-description" data-translate="desc8">QueenStatic_Shop adalah aplikasi web kasir
+                        untuk toko tas yang mengelola produk, stok, transaksi, dan penjualan secara real-time dengan
+                        dashboard ringkas, riwayat transaksi, dan tampilan intuitif yang responsif.</p>
+                    <div class="portfolio-tags">
+                        <span class="tag">HTML/CSS</span>
+                        <span class="tag">Javascript</span>
+                        <span class="tag">Tailwind CSS</span>
+                        <span class="tag">PHP</span>
+                        <span class="tag">LARAVEL</span>
+                        <span class="tag">MYSQL</span>
+                        <span class="tag">Dekstop</span>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -643,6 +728,8 @@
                 desc6: "Building an AI-based mobile application to help users seek new knowledge and explore",
                 h37: "UNIMEDIA",
                 desc7: "Building a social media-based case study website where students can store photos and",
+                h38: "QueenStatic_Shop",
+                desc8: "QueenStatic_Shop is a cashier web application for bag stores that manages products, stock, transactions, and sales in real-time.",
             },
             id: {
                 title: "Portofolio Saya",
@@ -651,7 +738,7 @@
                 h32: "UNIBOOK-STORE",
                 desc2: "Membangun Website Study Kasus Perpustakaan",
                 h33: "IMU-WebStore",
-                desc3: "Membangun Tampilan WebISIte Top Up Game Cepat, Mudah, dan Terpercaya untuk Pengalaman Gaming Tanpa Batas",
+                desc3: "Membangun Tampilan Website Top Up Game Cepat, Mudah, dan Terpercaya untuk Pengalaman Gaming Tanpa Batas",
                 h34: "Cashmate",
                 desc4: "Cashmate adalah aplikasi yang dirancang untuk membantu bisnis dalam mengelola aktivitas penjualan dengan cepat, aman, dan terstruktur",
                 h35: "Pomodoro-App",
@@ -660,6 +747,8 @@
                 desc6: "Membangun aplikasi ai berbasis mobile,membantu pengguna untuk mencari pengetahuan baru dan untuk menggali ilmu lebih lanjut.",
                 h37: "UNIMEDIA",
                 desc7: "Membangun website study kasus berbasis media sosial,dimana para siswa/siwi bisa menyimpan foto-foto dan dokumentasi lainnya.",
+                h38: "QueenStatic_Shop",
+                desc8: "QueenStatic_Shop adalah aplikasi web kasir untuk toko tas yang mengelola produk, stok, transaksi, dan penjualan secara real-time.",
             }
         };
 
@@ -681,6 +770,34 @@
                 el.textContent = translations[lang][key];
             });
         }
+
+        // Carousel for Cashmate
+        document.querySelectorAll('.carousel').forEach(carousel => {
+            const images = carousel.querySelectorAll('img');
+            let current = 0;
+            images[current].classList.add('active');
+
+            const showImage = (index) => {
+                images.forEach(img => img.classList.remove('active'));
+                images[index].classList.add('active');
+            };
+
+            carousel.querySelector('.prev').addEventListener('click', () => {
+                current = (current - 1 + images.length) % images.length;
+                showImage(current);
+            });
+
+            carousel.querySelector('.next').addEventListener('click', () => {
+                current = (current + 1) % images.length;
+                showImage(current);
+            });
+
+            // auto slide every 5 seconds
+            setInterval(() => {
+                current = (current + 1) % images.length;
+                showImage(current);
+            }, 2000);
+        });
 
 
     </script>
