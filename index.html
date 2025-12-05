@@ -562,116 +562,129 @@
         }
 
         /*id card*/
-        .idcard-wrapper {
+        .idcard-container {
             position: fixed;
-            top: -200px;
-            left: 30px;
-            transform: none;
-            animation: dropCard 1.3s cubic-bezier(.17, .89, .32, 1.28) forwards;
+            top: 0;
+            left: 0;
+            width: fit-content;
+            transform: scale(0.95);
             z-index: 9999;
         }
 
-
-        .rope {
-            width: 3px;
-            height: 140px;
-            background: #ccc;
-            margin: 0 auto;
-            transform-origin: top;
-            animation: ropeSwing 2.5s ease-in-out infinite;
+        .idcard-wrapper {
+            position: fixed;
+            top: -500px;
+            left: 30px;
+            transform-origin: top center;
+            animation:
+                dropAndSwing 6s cubic-bezier(.17, .89, .32, 1.28) forwards,
+                swingLoop 3s ease-in-out infinite;
         }
 
-        /* Card */
+        .lanyard {
+            width: 0.3cm;
+            height: 600px;
+            background: #2a2a2a;
+            border-radius: 6px;
+            margin: 0 auto;
+        }
+
+        .metal-hook {
+            width: 22px;
+            height: 15px;
+            border: 2px solid #c7c7c7;
+            border-radius: 6px;
+            margin: 4px auto 6px;
+            position: relative;
+        }
+
+        .metal-hook::after {
+            content: "";
+            width: 10px;
+            height: 18px;
+            border: 2px solid #c7c7c7;
+            border-radius: 8px;
+            position: absolute;
+            bottom: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .id-holder {
+            width: 190px;
+            height: 390px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(6px);
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
         .id-card {
             width: 180px;
-            background: #111;
-            color: white;
+            height: 370px;
+            background: #1b1b1b;
             text-align: center;
-            padding: 15px;
-            margin-top: -5px;
             border-radius: 8px;
-            border: 1px solid #444;
-            box-shadow: 0px 15px 20px rgba(0, 0, 0, .6);
-            transform-origin: top center;
-            animation: swingCard 2.5s ease-in-out infinite;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .id-card img {
             width: 100%;
+            height: 200px;
             border-radius: 5px;
-            margin-bottom: 10px;
+            object-fit: cover;
         }
 
-        /* animation down */
-        @keyframes dropCard {
+        @keyframes dropAndSwing {
             0% {
-                top: -200px;
+                transform: translateY(-500px) rotate(10deg);
+            }
+
+            60% {
+                transform: translateY(80px) rotate(-5deg);
             }
 
             100% {
-                top: 20px;
+                transform: translateY(80px) rotate(0deg);
             }
         }
 
-        /* swing */
-        @keyframes swingCard {
+        @keyframes swingLoop {
             0% {
-                transform: rotate(0deg);
-            }
-
-            25% {
-                transform: rotate(5deg);
+                transform: translateY(15px) rotate(4deg);
             }
 
             50% {
-                transform: rotate(-5deg);
-            }
-
-            75% {
-                transform: rotate(4deg);
+                transform: translateY(15px) rotate(-4deg);
             }
 
             100% {
-                transform: rotate(0deg);
+                transform: translateY(15px) rotate(4deg);
             }
         }
 
-        @keyframes ropeSwing {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            25% {
-                transform: rotate(3deg);
-            }
-
-            50% {
-                transform: rotate(-3deg);
-            }
-
-            75% {
-                transform: rotate(2deg);
-            }
-
-            100% {
-                transform: rotate(0deg);
+        @media (max-width: 800px) {
+            .idcard-wrapper {
+                left: 50%;
+                transform: translateX(-50%) scale(0.8);
+                top: -500px;
             }
         }
 
         @media (max-width: 480px) {
-
             .idcard-wrapper {
-                left: 10px;
+                left: 50%;
+                transform: translateX(-50%) scale(0.55);
                 top: 10px;
-                transform: none;
             }
 
-            .id-card {
-                width: 130px;
-                font-size: 12px;
-            }
-
-            .rope {
+            .lanyard {
                 height: 90px;
             }
         }
@@ -680,15 +693,23 @@
 
 <body>
 
-    <div class="idcard-wrapper">
-        <div class="rope"></div>
+    <div class="idcard-container">
+        <div class="idcard-wrapper">
 
-        <div class="id-card">
-            <img src="vhirell-photo.jpg" alt="Profile">
-            <h3>Vhirell Pratama Putra</h3>
-            <p>Junior • FullStack Developer</p>
+            <div class="lanyard"></div>
+            <div class="metal-hook"></div>
+            <div class="strap"></div>
+
+            <div class="id-holder">
+                <div class="id-card">
+                    <img src="./irell.jpg" alt="Profile">
+                    <h3 style="font-size:14px; margin:5px 0;">Vhirell Pratama Putra</h3>
+                    <p style="font-size:12px; opacity:.7;">Junior • FullStack Developer</p>
+                </div>
+            </div>
         </div>
     </div>
+
 
     <div class="container">
         <header>
@@ -782,4 +803,5 @@
 
     </script>
 </body>
+
 </html>
