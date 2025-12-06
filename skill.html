@@ -301,23 +301,27 @@
 
         /*id card*/
         .idcard-container {
-            position: fixed;
-            top: -500px;
+            position: relative;
+            top: -160px;
             left: 0;
             width: fit-content;
             transform: scale(0.95);
             z-index: 9999;
         }
 
+        :root {
+            --idcard-gap: -50px;
+        }
+
         .idcard-wrapper {
-            position: fixed;
-            top: 390px;
-            left: 30px;
+            position: absolute;
+            top: var(--idcard-gap);
+            left: 60px;
             transform-origin: top center;
             animation:
                 drop 2s cubic-bezier(.25, .46, .45, .94) forwards,
                 swingLoop 3s ease-in-out 1.9s infinite;
-
+            z-index: 9999;
         }
 
         .lanyard {
@@ -434,10 +438,10 @@
 
         @media (max-width: 800px) {
             .idcard-wrapper {
-                left: 50%;
+                left: 50px;
                 transform-origin: top center;
                 scale: 0.85;
-                top: 370px;
+                top: 20px;
             }
         }
 
@@ -445,7 +449,7 @@
             .idcard-wrapper {
                 left: 50%;
                 scale: 0.6;
-                top: 500px;
+                top: 150px;
                 transform-origin: top center;
             }
 
@@ -637,7 +641,7 @@
 
     <script>
 
-         const translations = {
+        const translations = {
             en: {
                 h: "My Skills",
                 h1: "Programming Languages",
@@ -648,7 +652,7 @@
             },
             id: {
                 h: "Keahlian Saya",
-                h1: "Bahasa Pemrograman",  
+                h1: "Bahasa Pemrograman",
                 h2: "Pengembang Web",
                 h3: "Desain UI/UX",
                 h4: "Database & Alat",
@@ -687,7 +691,7 @@
 
         idCard.addEventListener("click", () => {
             idCard.classList.add("hide-card");
-            });
+        });
     </script>
 </body>
 
