@@ -563,23 +563,27 @@
 
         /*id card*/
         .idcard-container {
-            position: fixed;
-            top: -500px;
+            position: relative;
+            top: -160px;
             left: 0;
             width: fit-content;
             transform: scale(0.95);
             z-index: 9999;
         }
 
+        :root {
+            --idcard-gap: -360px;
+        }
+
         .idcard-wrapper {
-            position: fixed;
-            top: 390px;
+            position: absolute;
+            top: var(--idcard-gap);
             left: 30px;
             transform-origin: top center;
             animation:
                 drop 2s cubic-bezier(.25, .46, .45, .94) forwards,
                 swingLoop 3s ease-in-out 1.9s infinite;
-
+            z-index: 9999;
         }
 
         .lanyard {
@@ -699,7 +703,7 @@
                 left: 50%;
                 transform-origin: top center;
                 scale: 0.85;
-                top: 370px;
+                top: -500px;
             }
         }
 
@@ -707,7 +711,7 @@
             .idcard-wrapper {
                 left: 50%;
                 scale: 0.6;
-                top: 500px;
+                top: -460px;
                 transform-origin: top center;
             }
 
@@ -836,6 +840,9 @@
         idCard.addEventListener("click", () => {
             idCard.classList.add("hide-card");
         });
+
+
+
     </script>
 </body>
 
