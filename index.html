@@ -647,11 +647,11 @@
             }
 
             60% {
-                transform: translateY(80px) rotate(-5deg);
+                transform: translateY(0px) rotate(-5deg);
             }
 
             100% {
-                transform: translateY(80px) rotate(0deg);
+                transform: translateY(0px) rotate(0deg);
             }
         }
 
@@ -672,20 +672,22 @@
         @media (max-width: 800px) {
             .idcard-wrapper {
                 left: 50%;
-                transform: translateX(-50%) scale(0.8);
-                top: -500px;
+                transform-origin: top center;
+                scale: 0.85;
+                top: -400px;
             }
         }
 
         @media (max-width: 480px) {
             .idcard-wrapper {
                 left: 50%;
-                transform: translateX(-50%) scale(0.55);
-                top: 10px;
+                scale: 0.6;
+                top: -50px;
+                 transform-origin: top center;
             }
 
             .lanyard {
-                height: 200px;
+                height: 500px;
             }
         }
     </style>
