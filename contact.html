@@ -5,10 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - Vhirell Pratama Putra</title>
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -338,10 +336,10 @@
 
             <button id="translate-btn" class="btn"
                 style="margin-left: 20px; padding: 8px 15px; font-size: 14px;">EN</button>
-                
+
             <div class="logo">Vhirell Pratama Putra</div>
             <nav>
-                
+
                 <ul>
                     <li><a href="./index.html">Home</a></li>
                     <li><a href="./portfolio.html">Portfolio</a></li>
@@ -374,20 +372,20 @@
                     </li>
                     <li class="contact-item">
                         <div class="contact-icon">
-                            <i class="fab fa-instagram"></i>
-                        </div>
-                        <div class="contact-details">
-                            <div class="contact-label">Instagram</div>
-                            <div class="contact-value">@muhammad_vhirell</div>
-                        </div>
-                    </li>
-                    <li class="contact-item">
-                        <div class="contact-icon">
                             <i class="fas fa-envelope"></i>
                         </div>
                         <div class="contact-details">
                             <div class="contact-label">Email</div>
                             <div class="contact-value">vhirellpratama@gmail.com</div>
+                        </div>
+                    </li>
+                    <li class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <div class="contact-details">
+                            <div class="contact-label">Instagram</div>
+                            <div class="contact-value">@muhammad_vhirell</div>
                         </div>
                     </li>
                     <li class="contact-item">
@@ -409,7 +407,7 @@
     </div>
 
     <script>
-         const translations = {
+        const translations = {
             en: {
                 title: "Contact Me",
                 desc: "Want to connect or discuss further? Feel free to reach out to me. I am always open to collaboration opportunities, new projects, or simply sharing insights.",
@@ -425,13 +423,13 @@
         };
 
         const btn = document.getElementById('translate-btn');
-        
+
         let currentLang = localStorage.getItem('lang') || 'id';
         setLanguage(currentLang);
 
         btn.addEventListener('click', () => {
             currentLang = currentLang === 'id' ? 'en' : 'id';
-            localStorage.setItem('lang', currentLang); 
+            localStorage.setItem('lang', currentLang);
             setLanguage(currentLang);
         });
 
