@@ -507,10 +507,186 @@
         .carousel .next {
             right: 10px;
         }
+
+        /*id card*/
+        .idcard-container {
+            position: fixed;
+            top: -500px;
+            left: 0;
+            width: fit-content;
+            transform: scale(0.95);
+            z-index: 9999;
+        }
+
+        .idcard-wrapper {
+            position: fixed;
+            top: 390px;
+            left: 30px;
+            transform-origin: top center;
+            animation:
+                drop 2s cubic-bezier(.25, .46, .45, .94) forwards,
+                swingLoop 3s ease-in-out 1.9s infinite;
+
+        }
+
+        .lanyard {
+            width: 0.3cm;
+            height: 400px;
+            background: #2a2a2a;
+            border-radius: 6px;
+            margin: 0 auto;
+        }
+
+        .metal-hook {
+            width: 22px;
+            height: 15px;
+            border: 2px solid #c7c7c7;
+            border-radius: 6px;
+            margin: 4px auto 6px;
+            position: relative;
+        }
+
+        .metal-hook::after {
+            content: "";
+            width: 10px;
+            height: 18px;
+            border: 2px solid #c7c7c7;
+            border-radius: 8px;
+            position: absolute;
+            bottom: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .id-holder {
+            width: 190px;
+            height: 340px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(6px);
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .id-card {
+            width: 180px;
+            height: 330px;
+            background: #1b1b1b;
+            text-align: center;
+            border-radius: 8px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .id-card img {
+            width: 100%;
+            height: 200px;
+            border-radius: 5px;
+            object-fit: cover;
+        }
+
+        .hide-card {
+            animation: pullUpAndFade 1s forwards;
+        }
+
+
+        @keyframes drop {
+            0% {
+                transform: translateY(-500px) rotate(10deg);
+                opacity: 0;
+            }
+
+            60% {
+                transform: translateY(20px) rotate(-10deg);
+                opacity: 1;
+            }
+
+            80% {
+                transform: translateY(-10px) rotate(5deg);
+            }
+
+            100% {
+                transform: translateY(0px) rotate(4deg);
+            }
+        }
+
+
+        @keyframes swingLoop {
+            0% {
+                transform: rotate(4deg);
+            }
+
+            50% {
+                transform: rotate(-4deg);
+            }
+
+            100% {
+                transform: rotate(4deg);
+            }
+        }
+
+        @keyframes pullUpAndFade {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-600px) rotate(-10deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 800px) {
+            .idcard-wrapper {
+                left: 50%;
+                transform-origin: top center;
+                scale: 0.85;
+                top: 370px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .idcard-wrapper {
+                left: 50%;
+                scale: 0.6;
+                top: 500px;
+                transform-origin: top center;
+            }
+
+            .lanyard {
+                height: 500px;
+            }
+        }
     </style>
 </head>
 
 <body>
+
+    <div class="idcard-container">
+        <div class="idcard-wrapper">
+
+            <div class="lanyard"></div>
+            <div class="metal-hook"></div>
+            <div class="strap"></div>
+
+            <div class="id-holder">
+                <div class="id-card">
+                    <img src="./irell.jpg" alt="Profile">
+                    <h3 style="font-size:14px; margin:5px 0;">Vhirell Pratama Putra</h3>
+                    <p style="font-size:12px; opacity:.7;">Junior • FullStack Web Developer</p>
+                    <p>-</p>
+                    <p data-translate="p3" style="font-size:20px; font-weight: bold; ">click me</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <div class="container">
         <header>
             <button id="translate-btn" class="btn"
@@ -713,6 +889,7 @@
     <script>
         const translations = {
             en: {
+                p3: "Click Me",
                 title: "My Portfolio",
                 h31: "SMKS Mahaputra Cerdas Utama",
                 desc1: "Building the Official Website of SMKS Mahaputra Cerdas Utama, Digital Innovation for Quality Education",
@@ -732,6 +909,7 @@
                 desc8: "QueenStatic_Shop is a cashier web application for bag stores that manages products, stock, transactions, and sales in real-time.",
             },
             id: {
+                p3: "Klik Saya",
                 title: "Portofolio Saya",
                 h31: "SMKS Mahaputra Cerdas Utama",
                 desc1: "Membangun Website Resmi SMKS Mahaputra Cerdas Utama,Inovasi Digital untuk Pendidikan Berkualitas",
@@ -757,6 +935,7 @@
         let currentLang = localStorage.getItem('lang') || 'id';
         setLanguage(currentLang);
 
+
         btn.addEventListener('click', () => {
             currentLang = currentLang === 'id' ? 'en' : 'id';
             localStorage.setItem('lang', currentLang);
@@ -770,6 +949,19 @@
                 el.textContent = translations[lang][key];
             });
         }
+
+        //id-card animation
+        window.addEventListener("load", () => {
+            const card = document.querySelector(".idcard-wrapper");
+            card.style.animationPlayState = "running";
+        });
+
+        //hide card on click
+        const idCard = document.querySelector(".idcard-wrapper");
+
+        idCard.addEventListener("click", () => {
+            idCard.classList.add("hide-card");
+        });
 
         // Carousel for Cashmate
         document.querySelectorAll('.carousel').forEach(carousel => {
@@ -798,8 +990,7 @@
                 showImage(current);
             }, 2000);
         });
-
-
     </script>
 </body>
+
 </html>
