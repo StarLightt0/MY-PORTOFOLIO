@@ -1026,6 +1026,10 @@
         const noBtn = document.getElementById("no-btn");
         const idCard = document.querySelector(".idcard-wrapper");
 
+        if (sessionStorage.getItem("idcardHidden") === "true") {
+            idCard.style.display = "none";
+        }
+
         idCard.addEventListener("click", () => {
             idCard.classList.add("hide-card");
             modal.style.display = "flex";
