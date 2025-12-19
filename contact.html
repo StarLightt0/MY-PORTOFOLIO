@@ -702,6 +702,7 @@
 
         idCard.addEventListener("click", () => {
             idCard.classList.add("hide-card");
+            sessionStorage.setItem("idcardHidden", "true");
             modal.style.display = "flex";
         });
 
