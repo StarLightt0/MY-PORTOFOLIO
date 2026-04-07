@@ -14,6 +14,7 @@
             font-family: 'Inter', sans-serif;
         }
 
+        /* ================================ body ================================ */
         body {
             background-color: #000;
             color: #fff;
@@ -34,6 +35,7 @@
             }
         }
 
+        /* ================================ container ================================ */
         .container {
             width: 100%;
             max-width: 1200px;
@@ -57,6 +59,7 @@
             }
         }
 
+        /* ================================ header================================ */
         header {
             display: flex;
             justify-content: space-between;
@@ -81,6 +84,7 @@
             }
         }
 
+        /* logo */
         .logo {
             font-weight: 700;
             font-size: 24px;
@@ -105,6 +109,7 @@
             width: 100%;
         }
 
+        /* nav */
         nav ul {
             display: flex;
             list-style: none;
@@ -190,6 +195,7 @@
             width: 100%;
         }
 
+        /* ================================ page ================================ */
         .page-title {
             text-align: center;
             padding: 40px 0 20px;
@@ -213,6 +219,7 @@
             }
         }
 
+        /* portfolio grid */
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -232,6 +239,7 @@
             }
         }
 
+        /* portfolio item */
         .portfolio-item {
             background: #111;
             border-radius: 8px;
@@ -293,6 +301,7 @@
             box-shadow: 0 15px 30px rgba(0, 102, 204, 0.3);
         }
 
+        /* portfolio image */
         .portfolio-image {
             width: 100%;
             height: 200px;
@@ -327,6 +336,7 @@
             opacity: 1;
         }
 
+        /* portfolio content */
         .portfolio-content {
             padding: 20px;
             transition: background-color 0.3s ease;
@@ -336,6 +346,7 @@
             background-color: #1a1a1a;
         }
 
+        /* portfolio title */
         .portfolio-title {
             font-size: 18px;
             font-weight: 600;
@@ -348,6 +359,7 @@
             color: #0066cc;
         }
 
+        /* portfolio description */
         .portfolio-description {
             font-size: 14px;
             color: #ccc;
@@ -359,6 +371,7 @@
             color: #fff;
         }
 
+        /* portfolio tags */
         .portfolio-tags {
             display: flex;
             flex-wrap: wrap;
@@ -408,6 +421,7 @@
             }
         }
 
+        /* page number */
         .page-number {
             text-align: right;
             padding: 30px 40px 20px;
@@ -418,7 +432,7 @@
             animation: fadeIn 1s ease-out 1.8s forwards;
         }
 
-        /* Responsive styles */
+        /* responsive styles */
         @media (max-width: 992px) {
             .portfolio-grid {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -473,7 +487,7 @@
             }
         }
 
-        /* carousel */
+        /* ================================ carousel ================================ */
         .carousel {
             position: relative;
             overflow: hidden;
@@ -508,7 +522,7 @@
             right: 10px;
         }
 
-        /*id card*/
+        /* ================================ id card================================ */
         .idcard-container {
             position: relative;
             top: -160px;
@@ -667,7 +681,7 @@
             }
         }
 
-        /* Pop Up */
+        /* ================================ pop up ================================ */
         .confirm-modal {
             position: fixed;
             top: 0;
@@ -713,11 +727,128 @@
         .confirm-buttons button:hover {
             background: rgb(98, 98, 98);
         }
+
+        /* ================================ lightbox ================================ */
+        .lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.92);
+            z-index: 99999;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .lightbox-overlay.active {
+            display: flex;
+        }
+
+        .lightbox-inner {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .lightbox-img-wrapper {
+            width: 100%;
+            max-height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .lightbox-img-wrapper img {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 8px;
+            user-select: none;
+        }
+
+        .lightbox-btn {
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            color: #fff;
+            font-size: 28px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 32px;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .lightbox-dots {
+            display: flex;
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        .lightbox-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #555;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .lightbox-dot.active {
+            background: #fff;
+        }
+
+        .lightbox-counter {
+            color: #aaa;
+            font-size: 13px;
+            margin-top: 8px;
+        }
+
+        /* responsive mobile lightbox */
+        @media (max-width: 600px) {
+            .lightbox-btn {
+                width: 36px;
+                height: 36px;
+                font-size: 20px;
+            }
+
+            .lightbox-close {
+                font-size: 26px;
+                top: -40px;
+            }
+        }
     </style>
 </head>
 
 <body>
 
+    <!-- ================================ id card================================ -->
     <div class="idcard-container">
         <div class="idcard-wrapper">
 
@@ -735,7 +866,7 @@
         </div>
     </div>
 
-
+    <!-- ================================ main content ================================ -->
     <div class="container">
         <header>
             <button id="translate-btn" class="btn"
@@ -754,6 +885,7 @@
 
         <div class="divider"></div>
 
+        <!-- ================================ card content ================================ -->
         <h1 class="page-title" data-translate="title">My Portfolio</h1>
 
         <div class="portfolio-grid">
@@ -935,7 +1067,7 @@
     <div class="page-number">Page | 02</div>
     </div>
 
-    <!--Pop Up -->
+    <!-- ================================ pop up ================================ -->
     <div id="confirm-modal" class="confirm-modal">
         <div class="confirm-box">
             <p data-translate="p4">Ingin pergi ke Instagram?</p>
@@ -946,6 +1078,21 @@
         </div>
     </div>
 
+    <!-- ================================ lightbox ================================ -->
+    <div class="lightbox-overlay" id="lightboxOverlay">
+        <div class="lightbox-inner">
+            <button class="lightbox-close" id="lightboxClose">&times;</button>
+            <button class="lightbox-btn" id="lightboxPrev">&#10094;</button>
+            <div class="lightbox-img-wrapper">
+                <img id="lightboxImg" src="" alt="Preview">
+            </div>
+            <button class="lightbox-btn" id="lightboxNext">&#10095;</button>
+        </div>
+        <div class="lightbox-dots" id="lightboxDots"></div>
+        <div class="lightbox-counter" id="lightboxCounter"></div>
+    </div>
+
+    <!-- ================================ script================================ -->
     <script>
         const translations = {
             en: {
@@ -1072,7 +1219,88 @@
                 showImage(current);
             }, 2000);
         });
+
+        // lightbox
+        (function () {
+            const overlay = document.getElementById('lightboxOverlay');
+            const img = document.getElementById('lightboxImg');
+            const btnPrev = document.getElementById('lightboxPrev');
+            const btnNext = document.getElementById('lightboxNext');
+            const btnClose = document.getElementById('lightboxClose');
+            const dotsWrap = document.getElementById('lightboxDots');
+            const counter = document.getElementById('lightboxCounter');
+
+            let images = [], current = 0;
+
+            function openLightbox(imgs, startIndex) {
+                images = imgs;
+                current = startIndex;
+                render();
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeLightbox() {
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            function render() {
+                img.src = images[current];
+                counter.textContent = (images.length > 1) ? `${current + 1} / ${images.length}` : '';
+                btnPrev.style.visibility = images.length > 1 ? 'visible' : 'hidden';
+                btnNext.style.visibility = images.length > 1 ? 'visible' : 'hidden';
+
+                // dots
+                dotsWrap.innerHTML = '';
+                if (images.length > 1) {
+                    images.forEach((_, i) => {
+                        const d = document.createElement('span');
+                        d.className = 'lightbox-dot' + (i === current ? ' active' : '');
+                        d.addEventListener('click', () => { current = i; render(); });
+                        dotsWrap.appendChild(d);
+                    });
+                }
+            }
+
+            btnPrev.addEventListener('click', () => { current = (current - 1 + images.length) % images.length; render(); });
+            btnNext.addEventListener('click', () => { current = (current + 1) % images.length; render(); });
+            btnClose.addEventListener('click', closeLightbox);
+            overlay.addEventListener('click', (e) => { if (e.target === overlay) closeLightbox(); });
+
+            // keyboard
+            document.addEventListener('keydown', (e) => {
+                if (!overlay.classList.contains('active')) return;
+                if (e.key === 'ArrowLeft') { current = (current - 1 + images.length) % images.length; render(); }
+                if (e.key === 'ArrowRight') { current = (current + 1) % images.length; render(); }
+                if (e.key === 'Escape') closeLightbox();
+            });
+
+            // touch swipe
+            let touchStartX = 0;
+            overlay.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+            overlay.addEventListener('touchend', (e) => {
+                const diff = touchStartX - e.changedTouches[0].clientX;
+                if (Math.abs(diff) > 50) {
+                    current = diff > 0
+                        ? (current + 1) % images.length
+                        : (current - 1 + images.length) % images.length;
+                    render();
+                }
+            });
+
+            // attach click - all portfolio-item
+            document.querySelectorAll('.portfolio-item').forEach(item => {
+                item.style.cursor = 'pointer';
+                item.addEventListener('click', () => {
+                    const imgs = Array.from(item.querySelectorAll('.portfolio-image img, .carousel img'))
+                        .map(i => i.src);
+                    if (imgs.length) openLightbox(imgs, 0);
+                });
+            });
+        })();
     </script>
+
 </body>
 
 </html>
