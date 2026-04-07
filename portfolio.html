@@ -1094,6 +1094,8 @@
 
     <!-- ================================ script================================ -->
     <script>
+
+        // ================================ translations ================================ // 
         const translations = {
             en: {
                 title: "My Portfolio",
@@ -1145,8 +1147,8 @@
 
         let currentLang = localStorage.getItem('lang') || 'id';
         setLanguage(currentLang);
-
-
+        
+        // toggle language
         btn.addEventListener('click', () => {
             currentLang = currentLang === 'id' ? 'en' : 'id';
             localStorage.setItem('lang', currentLang);
@@ -1161,6 +1163,7 @@
             });
         }
 
+        // ================================ id card ================================ // 
         //id-card animation
         window.addEventListener("load", () => {
             const card = document.querySelector(".idcard-wrapper");
@@ -1192,7 +1195,7 @@
             modal.style.display = "none";
         });
 
-        // Carousel for Cashmate
+        // ================================ carousel ================================ // 
         document.querySelectorAll('.carousel').forEach(carousel => {
             const images = carousel.querySelectorAll('img');
             let current = 0;
@@ -1220,8 +1223,8 @@
             }, 2000);
         });
 
-        // lightbox
-        (function () {
+        // ================================ lightbox ================================ // 
+        document.addEventListener('DOMContentLoaded', function () {
             const overlay = document.getElementById('lightboxOverlay');
             const img = document.getElementById('lightboxImg');
             const btnPrev = document.getElementById('lightboxPrev');
@@ -1251,7 +1254,6 @@
                 btnPrev.style.visibility = images.length > 1 ? 'visible' : 'hidden';
                 btnNext.style.visibility = images.length > 1 ? 'visible' : 'hidden';
 
-                // dots
                 dotsWrap.innerHTML = '';
                 if (images.length > 1) {
                     images.forEach((_, i) => {
@@ -1263,12 +1265,11 @@
                 }
             }
 
-            btnPrev.addEventListener('click', () => { current = (current - 1 + images.length) % images.length; render(); });
-            btnNext.addEventListener('click', () => { current = (current + 1) % images.length; render(); });
-            btnClose.addEventListener('click', closeLightbox);
+            btnPrev.addEventListener('click', (e) => { e.stopPropagation(); current = (current - 1 + images.length) % images.length; render(); });
+            btnNext.addEventListener('click', (e) => { e.stopPropagation(); current = (current + 1) % images.length; render(); });
+            btnClose.addEventListener('click', (e) => { e.stopPropagation(); closeLightbox(); });
             overlay.addEventListener('click', (e) => { if (e.target === overlay) closeLightbox(); });
 
-            // keyboard
             document.addEventListener('keydown', (e) => {
                 if (!overlay.classList.contains('active')) return;
                 if (e.key === 'ArrowLeft') { current = (current - 1 + images.length) % images.length; render(); }
@@ -1276,7 +1277,6 @@
                 if (e.key === 'Escape') closeLightbox();
             });
 
-            // touch swipe
             let touchStartX = 0;
             overlay.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
             overlay.addEventListener('touchend', (e) => {
@@ -1289,16 +1289,26 @@
                 }
             });
 
-            // attach click - all portfolio-item
+            // ================================ portfolio items click ================================ // 
             document.querySelectorAll('.portfolio-item').forEach(item => {
-                item.style.cursor = 'pointer';
-                item.addEventListener('click', () => {
-                    const imgs = Array.from(item.querySelectorAll('.portfolio-image img, .carousel img'))
-                        .map(i => i.src);
-                    if (imgs.length) openLightbox(imgs, 0);
+                const imageWrapper = item.querySelector('.portfolio-image');
+                if (!imageWrapper) return;
+
+                imageWrapper.style.cursor = 'zoom-in';
+                imageWrapper.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    // src img
+                    const allImgs = Array.from(item.querySelectorAll('.portfolio-image img'));
+                    const srcs = allImgs.map(i => i.src);
+                    if (!srcs.length) return;
+
+                    // corousel active img
+                    const activeImg = imageWrapper.querySelector('img.active') || allImgs[0];
+                    const startIdx = allImgs.indexOf(activeImg);
+                    openLightbox(srcs, startIdx >= 0 ? startIdx : 0);
                 });
             });
-        })();
+        });
     </script>
 
 </body>
