@@ -897,9 +897,31 @@
         }
 
         /* ================================ pin ================================ */
+        /* pinned*/
         .portfolio-item.pinned {
             order: -1;
-            box-shadow: 0 0 0 2px white, 0 15px 30px rgba(0, 102, 204, 0.3);
+            position: relative;
+            background: linear-gradient(145deg, #131313, #111);
+            box-shadow:
+                0 0 20px 4px rgba(255, 255, 255, 0.08),
+                0 20px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .portfolio-item.pinned::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 8px;
+            padding: 1.5px;
+            background: linear-gradient(135deg,
+                    rgba(255, 255, 255, 0.85) 0%,
+                    rgba(255, 255, 255, 0.3) 30%,
+                    rgba(255, 255, 255, 0.05) 60%,
+                    transparent 100%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
         }
 
         .pin-badge {
