@@ -1303,6 +1303,7 @@
         document.querySelectorAll('.carousel').forEach(carousel => {
             const images = carousel.querySelectorAll('img');
             let current = 0;
+            let hoverInterval = null;
             images[current].classList.add('active');
 
             const showImage = (index) => {
@@ -1320,11 +1321,61 @@
                 showImage(current);
             });
 
-            // auto slide every 5 seconds
-            setInterval(() => {
-                current = (current + 1) % images.length;
+            // slide - hover
+            carousel.addEventListener('mouseenter', () => {
+                hoverInterval = setInterval(() => {
+                    current = (current + 1) % images.length;
+                    showImage(current);
+                }, 900);
+            });
+
+            carousel.addEventListener('mouseleave', () => {
+                clearInterval(hoverInterval);
+                hoverInterval = null;
+                current = 0;
                 showImage(current);
-            }, 2000);
+            });
+        });
+
+        // hover slide not corousel
+        document.querySelectorAll('.portfolio-image:not(.carousel)').forEach(wrapper => {
+            const images = wrapper.querySelectorAll('img');
+            if (images.length < 2) return;
+
+            let current = 0;
+            let hoverInterval = null;
+
+            // set position 
+            wrapper.style.position = 'relative';
+            images.forEach((img, i) => {
+                img.style.position = 'absolute';
+                img.style.top = '0';
+                img.style.left = '0';
+                img.style.width = '100%';
+                img.style.height = '100%';
+                img.style.objectFit = 'cover';
+                img.style.opacity = i === 0 ? '1' : '0';
+                img.style.transition = 'opacity 0.4s ease';
+            });
+
+            const showImage = (index) => {
+                images.forEach(img => img.style.opacity = '0');
+                images[index].style.opacity = '1';
+            };
+
+            wrapper.addEventListener('mouseenter', () => {
+                hoverInterval = setInterval(() => {
+                    current = (current + 1) % images.length;
+                    showImage(current);
+                }, 900);
+            });
+
+            wrapper.addEventListener('mouseleave', () => {
+                clearInterval(hoverInterval);
+                hoverInterval = null;
+                current = 0;
+                showImage(current);
+            });
         });
 
         // ================================ lightbox ================================ // 
