@@ -11,6 +11,8 @@
 
 <body>
 
+    <!-- ================================ id card================================ -->
+
     <div class="idcard-container">
         <div class="idcard-wrapper">
 
@@ -30,7 +32,7 @@
         </div>
     </div>
 
-
+    <!-- ================================ main content ================================ -->
     <div class="container">
         <header>
             <button id="translate-btn" class="btn"
@@ -50,6 +52,7 @@
 
         <div class="divider"></div>
 
+        <!-- img -->
         <div class="content-wrapper">
             <div class="image-container">
                 <div class="profile-image">
@@ -57,6 +60,7 @@
                 </div>
             </div>
 
+            <!-- content -->
             <section class="hero">
                 <h1 data-translate="title">Tentang Saya</h1>
                 <div class="hero-content">
@@ -78,7 +82,7 @@
         <div class="page-number">Page | 01</div>
     </div>
 
-    <!--Pop Up -->
+    <!--pop Up -->
     <div id="confirm-modal" class="confirm-modal">
         <div class="confirm-box">
             <p data-translate="p4">Ingin pergi ke Instagram?</p>
@@ -89,7 +93,10 @@
         </div>
     </div>
 
+    <!-- ================================ script ================================ -->
     <script>
+
+        // translete 
         const translations = {
             en: {
                 title: "About Me",
@@ -113,6 +120,7 @@
             }
         };
 
+        // translete logic
         const btn = document.getElementById('translate-btn');
 
         let currentLang = localStorage.getItem('lang') || 'id';
